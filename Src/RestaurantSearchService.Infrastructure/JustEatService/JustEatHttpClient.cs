@@ -36,6 +36,8 @@ namespace RestaurantSearchService.Infrastructure.JustEatService
                 return JsonConvert.DeserializeObject<RestaurantsSearchResponse>(content);
             }
 
+            _logger.LogWarning("Received successful response from Just Eat {statusCode} but unexpected empty content", response.StatusCode);
+
             throw new UnexpectedResponseException(nameof(JustEatHttpClient));
         }
     }
