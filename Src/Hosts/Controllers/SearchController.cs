@@ -1,7 +1,9 @@
 ﻿using System.Linq;
+using System.Net.Mime;
 using System.Threading.Tasks;
 using Hosts.Contracts;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using RestaurantSearchService.Infrastructure.JustEatService;
 
 namespace Hosts.Controllers
@@ -18,6 +20,7 @@ namespace Hosts.Controllers
         }
 
         [HttpGet]
+        [Produces("application/json")]
         public async Task<IActionResult> Search([FromQuery] RestaurantsSearchRequest request)
         {
             var restaurants = (await _justEatService.SearchRestaurantsAsync(request.OutCode)).ToList();
