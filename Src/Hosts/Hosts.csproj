@@ -4,5 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RestaurantSearchService.Domain\RestaurantSearchService.Domain.csproj" />
+    <ProjectReference Include="..\RestaurantSearchService.Infrastructure\RestaurantSearchService.Infrastructure.csproj" />
+  </ItemGroup>
+
 
 </Project>
