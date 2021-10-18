@@ -3,7 +3,7 @@
 I have spent approximately 4.5 hours with the majority of the time spent on testing. I would add the following if I have more time
 * Outcode validation, so we don't pass raw value to our third party provider
 * Better swagger documentation
-* Fix some of my spelling mistakes `Restaurant -> Restaurants` 
+* Revisit and improve my choice of word for `Restaurant <-> Restaurants` 
 * A more defined physical boundary between `JustEatService` and `JustEathttpClient`. i.e arranging folders
 * Use request builders in tests to improve readability  and reduce variable persistency at the fixture layer
 * Do E2E test
