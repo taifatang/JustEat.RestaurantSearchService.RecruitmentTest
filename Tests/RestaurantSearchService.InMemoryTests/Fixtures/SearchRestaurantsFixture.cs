@@ -17,7 +17,7 @@ namespace RestaurantSearchService.InMemoryTests.Fixtures
     public class SearchRestaurantsFixture : AcceptanceTestBase
     {
         private HttpResponseMessage _response;
-        private IEnumerable<Restaurant> _restaurants = new List<Restaurant>();
+        private IEnumerable<Restaurant> _restaurants;
 
         [Test]
         public void Search_restaurants()
@@ -25,7 +25,7 @@ namespace RestaurantSearchService.InMemoryTests.Fixtures
             this.Given(_ => _.RestaurantsAreOpenLocally())
                 .When(_ => _.ISearchByOutCode("nw9"))
                 .Then(_ => StatusCodeShouldBe(HttpStatusCode.OK))
-                .Then(_ => RestaurantsAreReturned())
+                .And(_ => OpenRestaurantsAreReturned())
                 .BDDfy();
         }
 
@@ -35,7 +35,7 @@ namespace RestaurantSearchService.InMemoryTests.Fixtures
             this.Given(_ => _.NoRestaurantsAreFoundLocally())
                 .When(_ => _.ISearchByOutCode("nw9"))
                 .Then(_ => StatusCodeShouldBe(HttpStatusCode.NotFound))
-                .Then(_ => NoRestaurantsAreReturned())
+                .And(_ => NoRestaurantsAreReturned())
                 .BDDfy();
         }
 
@@ -45,7 +45,7 @@ namespace RestaurantSearchService.InMemoryTests.Fixtures
             this.Given(_ => _.RestaurantsAreClosedLocally())
                 .When(_ => _.ISearchByOutCode("nw9"))
                 .Then(_ => StatusCodeShouldBe(HttpStatusCode.NotFound))
-                .Then(_ => NoRestaurantsAreReturned())
+                .And(_ => NoRestaurantsAreReturned())
                 .BDDfy();
         }
 
@@ -100,7 +100,7 @@ namespace RestaurantSearchService.InMemoryTests.Fixtures
             _response.StatusCode.Should().Be(statusCode);
         }
 
-        public async Task RestaurantsAreReturned()
+        public async Task OpenRestaurantsAreReturned()
         {
             var content = await _response.Content.ReadAsStringAsync();
 
@@ -108,11 +108,11 @@ namespace RestaurantSearchService.InMemoryTests.Fixtures
 
             result.Restaurants.Should().NotBeEmpty();
 
-            var expectedOpenedRestaurants = _restaurants
+            var expectedOpenRestaurants = _restaurants
                 .Where(x=>x.IsOpenNow)
                 .Select(x => x.Name);
 
-            result.Restaurants.Select(x=>x.Name).Should().BeEquivalentTo(expectedOpenedRestaurants);
+            result.Restaurants.Select(x=>x.Name).Should().BeEquivalentTo(expectedOpenRestaurants);
         }
 
         public async Task NoRestaurantsAreReturned()
