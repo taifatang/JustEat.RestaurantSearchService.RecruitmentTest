@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using Newtonsoft.Json;
 using NUnit.Framework;
-using RestaurantSearchService.Domain.JustEat;
+using RestaurantSearchService.Domain.JustEatService.Contracts;
 using TestStack.BDDfy;
 
 namespace RestaurantSearchService.InMemoryTests.Fixtures
@@ -61,10 +61,9 @@ namespace RestaurantSearchService.InMemoryTests.Fixtures
 
         public void NoRestaurantsAreFoundLocally()
         {
-            JustEatClientStub.QueueNextResponse(new RestaurantsSearchResponse()
-            {
-                Restaurants = Enumerable.Empty<Restaurant>()
-            });
+            _restaurants = Enumerable.Empty<Restaurant>();
+
+            JustEatClientStub.QueueNextResponse(new RestaurantsSearchResponse() { Restaurants = _restaurants });
         }
 
         public void RestaurantsAreClosedLocally()

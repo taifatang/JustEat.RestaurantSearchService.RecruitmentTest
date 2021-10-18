@@ -22,8 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\RestaurantSearchService.Helper\RestaurantSearchService.Helper.csproj" />
     <ProjectReference Include="..\..\Src\Hosts\Hosts.csproj" />
+    <ProjectReference Include="..\RestaurantSearchService.Helper\RestaurantSearchService.TestHelper.csproj" />
   </ItemGroup>
 
 </Project>

@@ -2,8 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using RestaurantSearchService.Domain.JustEat;
-using RestaurantSearchService.Infrastructure.JustEat;
+using RestaurantSearchService.Domain.JustEatService;
+using RestaurantSearchService.Infrastructure.JustEatService;
 
 namespace Hosts.Extensions
 {
@@ -11,7 +11,7 @@ namespace Hosts.Extensions
     {
         public static IServiceCollection RegisterConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
-            services.Configure<JustEatSettings>(configuration.GetSection(JustEatSettings.Position));
+            services.Configure<JustEatServiceSettings>(configuration.GetSection(JustEatServiceSettings.Position));
 
             return services;
         }
@@ -20,7 +20,7 @@ namespace Hosts.Extensions
         {
             services.AddHttpClient<IJustEatHttpClient, JustEatHttpClient>((provider, client) =>
             {
-                client.BaseAddress = provider.GetRequiredService<IOptions<JustEatSettings>>().Value.BaseUrl;
+                client.BaseAddress = provider.GetRequiredService<IOptions<JustEatServiceSettings>>().Value.BaseUrl;
             });
 
             return services;

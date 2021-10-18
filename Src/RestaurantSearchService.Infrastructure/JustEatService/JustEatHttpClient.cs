@@ -1,11 +1,12 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using RestaurantSearchService.Domain.Exceptions;
-using RestaurantSearchService.Domain.JustEat;
-using Microsoft.Extensions.Logging;
+using RestaurantSearchService.Domain.JustEatService;
+using RestaurantSearchService.Domain.JustEatService.Contracts;
 
-namespace RestaurantSearchService.Infrastructure.JustEat
+namespace RestaurantSearchService.Infrastructure.JustEatService
 {
     public class JustEatHttpClient: IJustEatHttpClient
     {
@@ -18,7 +19,7 @@ namespace RestaurantSearchService.Infrastructure.JustEat
             _logger = logger;
         }
 
-        public async Task<RestaurantsSearchResponse> SearchRestaurants(string outCode)
+        public async Task<RestaurantsSearchResponse> SearchRestaurantsAsync(string outCode)
         {
             var response = await _httpClient.GetAsync($"restaurants/bypostcode/{outCode}");
             var content = response.Content != null ? await response.Content.ReadAsStringAsync() : null;

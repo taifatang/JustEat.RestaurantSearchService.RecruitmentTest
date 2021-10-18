@@ -1,7 +1,7 @@
 ﻿using System.Net.Http;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
-using RestaurantSearchService.Domain.JustEat;
+using RestaurantSearchService.Domain.JustEatService;
 using RestaurantSearchService.InMemoryTests.Stubs;
 
 namespace RestaurantSearchService.InMemoryTests

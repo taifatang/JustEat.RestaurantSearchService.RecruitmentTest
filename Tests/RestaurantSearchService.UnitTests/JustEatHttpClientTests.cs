@@ -8,9 +8,9 @@ using Microsoft.Extensions.Logging.Abstractions;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using RestaurantSearchService.Domain.Exceptions;
-using RestaurantSearchService.Domain.JustEat;
-using RestaurantSearchService.Helper;
-using RestaurantSearchService.Infrastructure.JustEat;
+using RestaurantSearchService.Domain.JustEatService.Contracts;
+using RestaurantSearchService.Infrastructure.JustEatService;
+using RestaurantSearchService.TestHelper;
 
 namespace RestaurantSearchService.UnitTests
 {
@@ -44,7 +44,7 @@ namespace RestaurantSearchService.UnitTests
                 r.Content = new StringContent(JsonConvert.SerializeObject(response));
             });
 
-            var result = await _justEatHttpClient.SearchRestaurants("nw9");
+            var result = await _justEatHttpClient.SearchRestaurantsAsync("nw9");
 
             result.Should().BeEquivalentTo(response);
         }
@@ -65,7 +65,7 @@ namespace RestaurantSearchService.UnitTests
                 }));
             });
 
-             await _justEatHttpClient.SearchRestaurants(expectedOutCode);
+             await _justEatHttpClient.SearchRestaurantsAsync(expectedOutCode);
 
              _fakeHttpClient.LastRequest.RequestUri.Should().Be($"https://justeat.local/restaurants/bypostcode/{expectedOutCode}");
         }
@@ -78,7 +78,7 @@ namespace RestaurantSearchService.UnitTests
                 r.StatusCode = HttpStatusCode.BadRequest;
             });
 
-            Assert.ThrowsAsync<UnexpectedResponseException>(() => _justEatHttpClient.SearchRestaurants("nw9"));
+            Assert.ThrowsAsync<UnexpectedResponseException>(() => _justEatHttpClient.SearchRestaurantsAsync("nw9"));
         }
 
         [Test]
@@ -89,7 +89,7 @@ namespace RestaurantSearchService.UnitTests
                 r.StatusCode = HttpStatusCode.OK;
             });
 
-            Assert.ThrowsAsync<UnexpectedResponseException>(() => _justEatHttpClient.SearchRestaurants("nw9"));
+            Assert.ThrowsAsync<UnexpectedResponseException>(() => _justEatHttpClient.SearchRestaurantsAsync("nw9"));
         }
     }
 }

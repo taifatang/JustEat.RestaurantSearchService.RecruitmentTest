@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using RestaurantSearchService.Domain.JustEat;
+using RestaurantSearchService.Domain.JustEatService;
 using Restaurant = RestaurantSearchService.Domain.Models.Restaurant;
 
-namespace RestaurantSearchService.Infrastructure.JustEat
+namespace RestaurantSearchService.Infrastructure.JustEatService
 {
     public class JustEatService
     {
@@ -15,9 +15,9 @@ namespace RestaurantSearchService.Infrastructure.JustEat
             _justEatHttpClient = justEatHttpClient;
         }
 
-        public async Task<IEnumerable<Restaurant>> SearchRestaurants(string outCode)
+        public async Task<IEnumerable<Restaurant>> SearchRestaurantsAsync(string outCode)
         {
-            var searchResponse = await _justEatHttpClient.SearchRestaurants(outCode);
+            var searchResponse = await _justEatHttpClient.SearchRestaurantsAsync(outCode);
 
             return searchResponse.Restaurants
                 .Where(x=>x.IsOpenNow)

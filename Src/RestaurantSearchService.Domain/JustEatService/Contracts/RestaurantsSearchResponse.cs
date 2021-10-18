@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace RestaurantSearchService.Domain.JustEat
+namespace RestaurantSearchService.Domain.JustEatService.Contracts
 {
     public class RestaurantsSearchResponse
     {

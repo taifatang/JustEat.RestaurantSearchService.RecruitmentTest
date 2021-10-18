@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Hosts.Contracts;
 using Microsoft.AspNetCore.Mvc;
-using RestaurantSearchService.Infrastructure.JustEat;
+using RestaurantSearchService.Infrastructure.JustEatService;
 
 namespace Hosts.Controllers
 {
@@ -20,7 +20,7 @@ namespace Hosts.Controllers
         [HttpGet]
         public async Task<IActionResult> Search([FromQuery] RestaurantsSearchRequest request)
         {
-            var restaurants = (await _justEatService.SearchRestaurants(request.OutCode)).ToList();
+            var restaurants = (await _justEatService.SearchRestaurantsAsync(request.OutCode)).ToList();
 
             if (!restaurants.Any())
             {

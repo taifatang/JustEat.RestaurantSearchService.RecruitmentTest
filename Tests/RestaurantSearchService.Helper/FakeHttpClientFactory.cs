@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RestaurantSearchService.Helper
+namespace RestaurantSearchService.TestHelper
 {
     public static class FakeHttpClientFactory
     {

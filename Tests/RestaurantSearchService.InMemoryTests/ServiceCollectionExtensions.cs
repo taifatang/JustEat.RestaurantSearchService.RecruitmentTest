@@ -1,10 +1,10 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging.Abstractions;
-using RestaurantSearchService.Domain.JustEat;
-using RestaurantSearchService.Helper;
-using RestaurantSearchService.Infrastructure.JustEat;
+using RestaurantSearchService.Domain.JustEatService;
+using RestaurantSearchService.Infrastructure.JustEatService;
 using RestaurantSearchService.InMemoryTests.Stubs;
+using RestaurantSearchService.TestHelper;
 
 namespace RestaurantSearchService.InMemoryTests
 {

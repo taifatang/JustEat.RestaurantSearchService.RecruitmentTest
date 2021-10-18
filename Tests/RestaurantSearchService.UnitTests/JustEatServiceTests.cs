@@ -3,8 +3,9 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using Moq;
 using NUnit.Framework;
-using RestaurantSearchService.Domain.JustEat;
-using RestaurantSearchService.Infrastructure.JustEat;
+using RestaurantSearchService.Domain.JustEatService;
+using RestaurantSearchService.Domain.JustEatService.Contracts;
+using RestaurantSearchService.Infrastructure.JustEatService;
 
 namespace RestaurantSearchService.UnitTests
 {
@@ -19,13 +20,13 @@ namespace RestaurantSearchService.UnitTests
             _justEatHttpClientMock = new Mock<IJustEatHttpClient>();
             _justEatService = new JustEatService(_justEatHttpClientMock.Object);
 
-            _justEatHttpClientMock.Setup(x => x.SearchRestaurants("nw9")).ReturnsAsync(new RestaurantsSearchResponse());
+            _justEatHttpClientMock.Setup(x => x.SearchRestaurantsAsync("nw9")).ReturnsAsync(new RestaurantsSearchResponse());
         }
 
         [Test]
         public async Task Search_restaurants()
         {
-            _justEatHttpClientMock.Setup(x => x.SearchRestaurants("nw9")).ReturnsAsync(new RestaurantsSearchResponse()
+            _justEatHttpClientMock.Setup(x => x.SearchRestaurantsAsync("nw9")).ReturnsAsync(new RestaurantsSearchResponse()
             {
                 Restaurants = new List<Restaurant>()
                 {
@@ -34,9 +35,9 @@ namespace RestaurantSearchService.UnitTests
                 }
             });
 
-            var result = await _justEatService.SearchRestaurants("nw9");
+            var result = await _justEatService.SearchRestaurantsAsync("nw9");
 
-            _justEatHttpClientMock.Verify(x => x.SearchRestaurants("nw9"), Times.Once);
+            _justEatHttpClientMock.Verify(x => x.SearchRestaurantsAsync("nw9"), Times.Once);
 
             result.Should().HaveCount(2)
                 .And.BeEquivalentTo(new[]
@@ -49,7 +50,7 @@ namespace RestaurantSearchService.UnitTests
         [Test]
         public async Task Search_restaurants_returns_open_restaurants_only()
         {
-            _justEatHttpClientMock.Setup(x => x.SearchRestaurants("nw9")).ReturnsAsync(new RestaurantsSearchResponse()
+            _justEatHttpClientMock.Setup(x => x.SearchRestaurantsAsync("nw9")).ReturnsAsync(new RestaurantsSearchResponse()
             {
                 Restaurants = new List<Restaurant>()
                 {
@@ -60,7 +61,7 @@ namespace RestaurantSearchService.UnitTests
                 }
             });
 
-            var result = await _justEatService.SearchRestaurants("nw9");
+            var result = await _justEatService.SearchRestaurantsAsync("nw9");
 
             result.Should().HaveCount(2)
                 .And.BeEquivalentTo(new[]

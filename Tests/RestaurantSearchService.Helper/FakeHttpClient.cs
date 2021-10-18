@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 
-namespace RestaurantSearchService.Helper
+namespace RestaurantSearchService.TestHelper
 {
     public class FakeHttpClient: HttpClient
     {

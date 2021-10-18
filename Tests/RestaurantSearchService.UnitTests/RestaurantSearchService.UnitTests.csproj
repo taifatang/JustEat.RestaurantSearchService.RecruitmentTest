@@ -12,9 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\RestaurantSearchService.Helper\RestaurantSearchService.Helper.csproj" />
     <ProjectReference Include="..\..\Src\RestaurantSearchService.Domain\RestaurantSearchService.Domain.csproj" />
     <ProjectReference Include="..\..\Src\RestaurantSearchService.Infrastructure\RestaurantSearchService.Infrastructure.csproj" />
+    <ProjectReference Include="..\RestaurantSearchService.Helper\RestaurantSearchService.TestHelper.csproj" />
   </ItemGroup>
 
 </Project>

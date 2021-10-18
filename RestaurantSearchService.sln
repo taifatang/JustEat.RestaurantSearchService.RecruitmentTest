@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantSearchService.InM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantSearchService.UnitTests", "Tests\RestaurantSearchService.UnitTests\RestaurantSearchService.UnitTests.csproj", "{20CC44DE-6A4D-4975-96B0-806F8619895B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantSearchService.Helper", "RestaurantSearchService.Helper\RestaurantSearchService.Helper.csproj", "{ADB4A664-3DDD-4CA8-8AEF-986C4ACD5230}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantSearchService.TestHelper", "Tests\RestaurantSearchService.Helper\RestaurantSearchService.TestHelper.csproj", "{5ED0140F-CDA6-4ECC-94A3-1A6A2D14F33E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,10 +51,10 @@ Global
 		{20CC44DE-6A4D-4975-96B0-806F8619895B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20CC44DE-6A4D-4975-96B0-806F8619895B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20CC44DE-6A4D-4975-96B0-806F8619895B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ADB4A664-3DDD-4CA8-8AEF-986C4ACD5230}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ADB4A664-3DDD-4CA8-8AEF-986C4ACD5230}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ADB4A664-3DDD-4CA8-8AEF-986C4ACD5230}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ADB4A664-3DDD-4CA8-8AEF-986C4ACD5230}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5ED0140F-CDA6-4ECC-94A3-1A6A2D14F33E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ED0140F-CDA6-4ECC-94A3-1A6A2D14F33E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ED0140F-CDA6-4ECC-94A3-1A6A2D14F33E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ED0140F-CDA6-4ECC-94A3-1A6A2D14F33E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,7 +66,7 @@ Global
 		{580D4AC9-3C8E-43E7-B526-89A3A5831F4B} = {4DAF3256-ABA4-4F62-A023-5CC156E6DEE0}
 		{ED663C2A-0656-47FD-BCA6-C2FEEAEF9C63} = {4DAF3256-ABA4-4F62-A023-5CC156E6DEE0}
 		{20CC44DE-6A4D-4975-96B0-806F8619895B} = {4DAF3256-ABA4-4F62-A023-5CC156E6DEE0}
-		{ADB4A664-3DDD-4CA8-8AEF-986C4ACD5230} = {4DAF3256-ABA4-4F62-A023-5CC156E6DEE0}
+		{5ED0140F-CDA6-4ECC-94A3-1A6A2D14F33E} = {4DAF3256-ABA4-4F62-A023-5CC156E6DEE0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09ECB2AC-EADA-4944-83D5-D07DD1D78198}

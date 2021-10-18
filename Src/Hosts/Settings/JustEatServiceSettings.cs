@@ -2,7 +2,7 @@
 
 namespace Hosts.Settings
 {
-    public class JustEatSettings
+    public class JustEatServiceSettings
     {
         public static string Position => "JustEat";
         public Uri BaseUrl { get; set; }  
