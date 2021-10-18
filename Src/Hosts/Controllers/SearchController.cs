@@ -1,9 +1,7 @@
 ﻿using System.Linq;
-using System.Net.Mime;
 using System.Threading.Tasks;
 using Hosts.Contracts;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Formatters;
 using RestaurantSearchService.Infrastructure.JustEatService;
 
 namespace Hosts.Controllers
